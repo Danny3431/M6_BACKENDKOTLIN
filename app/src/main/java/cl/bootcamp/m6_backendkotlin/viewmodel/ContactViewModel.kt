@@ -4,6 +4,8 @@ import androidx.lifecycle.*
 import cl.bootcamp.m6_backendkotlin.model.Contact
 import cl.bootcamp.m6_backendkotlin.repository.ContactRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -13,10 +15,14 @@ class ContactViewModel @Inject constructor(
 
 ) : ViewModel() {
 
-    val allContacts: LiveData<List<Contact>> = repository.allContacts
+    val allContacts: Flow<List<Contact>> = repository.allContacts
 
     fun insert(contact: Contact) = viewModelScope.launch {
         repository.insert(contact)
+    }
+
+    fun getContactById(contactId: Int): Flow<Contact?> {
+        return repository.getContactById(contactId) ?: flowOf(null)
     }
 
     fun update(contact: Contact) = viewModelScope.launch {
