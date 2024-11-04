@@ -1,5 +1,6 @@
 package cl.bootcamp.m6_backendkotlin.model
 
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
@@ -12,5 +13,6 @@ data class Contact(
     val telefono: String,
     val correo: String,
     val imagenPerfil: String, // URL o URI de la imagen
-    val fechaNacimiento: String
+    val fechaNacimiento: String,
+
 )

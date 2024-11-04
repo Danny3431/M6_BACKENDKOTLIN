@@ -12,5 +12,4 @@ abstract class ContactDatabase : RoomDatabase() {
 
     abstract fun contactDao(): ContactDao
 
-
 }
